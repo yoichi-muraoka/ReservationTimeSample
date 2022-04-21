@@ -1,13 +1,15 @@
 package main;
 
+import service.ReservationService;
+
 public class Application {
 
 	public static void main(String[] args) {
+		ReservationService service = new ReservationService();
+		
 		// 現在の予約状況を表示
 		System.out.println("[現在の予約状況]--------------");
-		System.out.println("10:00～12:00　笹川紘一様");
-		System.out.println("15:00～16:30　本宮弘子様");
-		System.out.println("18:30～20:30　藤上達也様");
+		service.showSchedule();
 		System.out.println("------------------------------\n");
 		
 		// 名前、利用開始時刻、終了時刻を入力してもらう
