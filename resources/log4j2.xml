@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="off">
+
+	<Properties>
+		<Property name="fmt"
+			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n" />
+		<Property name="file"
+			value="C:/Logs/reservation-debug.log" />
+	</Properties>
+
+	<Appenders>
+		<File name="logfile" fileName="${file}">
+			<PatternLayout pattern="${fmt}" />
+		</File>
+	</Appenders>
+
+	<Loggers>
+		<Root level="debug">
+			<AppenderRef ref="logfile" />
+		</Root>
+	</Loggers>
+	
+</Configuration>
