@@ -3,6 +3,7 @@ package service;
 import java.time.LocalTime;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,9 +22,10 @@ public class ReservationService {
 	public ReservationService() {
 		List<Reservation> list = ReservationProvider.provideAll();
 		// 予約リストを利用開始時刻順(昇順)に並び替え
+		// Java17では、.collect(Collectors.toList()) の部分は .toList() だけでOK
 		this.reservationList = list.stream()
 				.sorted(Comparator.comparing(Reservation::getFrom))
-				.toList();
+				.collect(Collectors.toList());
 		
 		// 予約可能な時間を8:00～22:00に設定
 		openingTime = LocalTime.of(8, 0);
